@@ -10,7 +10,6 @@ public class ToppingTest {
         FoodItem burger = new Burger();
         burger = new Cheese(burger);
 
-        // Base burger (5.00) + Cheese (1.00) = 6.00
         assertEquals(6.00, burger.getCost());
         assertEquals("Burger, Cheese", burger.getDescription());
     }
