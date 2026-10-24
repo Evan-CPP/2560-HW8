@@ -52,4 +52,12 @@ public class PaymentTest {
         String result = bitcoinPayment.processPayment(200.00);
         assertEquals("Bitcoin payment of $200.0 processed. SMS: Payment received.", result);
     }
+
+    @Test
+    public void testOnlineWithPush() {
+        NotificationChannel push = new PushChannel();
+        Payment onlinePayment = new OnlinePaymentNotification(push);
+        String result = onlinePayment.processPayment(300.00);
+        assertEquals("Online payment of $300.0 processed. Push: Payment received.", result);
+    }
 }
