@@ -36,4 +36,20 @@ public class PaymentTest {
         String result = cashPayment.processPayment(1000.00);
         assertEquals("Cash on delivery payment of $1000.0 processed. SMS: Payment received.", result);
     }
+
+    @Test
+    public void testBitcoinWithEmail() {
+        NotificationChannel email = new EmailChannel();
+        Payment bitcoinPayment = new BitcoinPayment(email);
+        String result = bitcoinPayment.processPayment(100.00);
+        assertEquals("Bitcoin payment of $100.0 processed. Email: Payment received.", result);
+    }
+
+    @Test
+    public void testBitcoinWithSms() {
+        NotificationChannel sms = new SmsChannel();
+        Payment bitcoinPayment = new BitcoinPayment(sms);
+        String result = bitcoinPayment.processPayment(200.00);
+        assertEquals("Bitcoin payment of $200.0 processed. SMS: Payment received.", result);
+    }
 }
